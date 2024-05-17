@@ -1,0 +1,102 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using MVC_Client.Model.Product;
+@model ProductAdd
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@if (Context.Session.GetString("Key") == "" || Context.Session.GetString("Key") == null)
+{
+    <script>
+
+        window.location.href = '/Home';
+
+
+    </script>
+
+}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Product/Index">Products</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Category/Index">Category</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Supplier/Index">Supplier</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Customer/Index">Customer</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Order/Index">Order</a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Home/Logout">Logout</a>
+        </div>
+
+    </div>
+</nav>
+<form asp-controller="Product" asp-action="AddProduct" method="post">
+    <div class="container">
+        <h1>Add Product</h1>
+        <p>Please fill in this form to create a Product.</p>
+        <hr>
+
+        <label for="ProductName"><b>ProductName</b></label>
+        <input asp-for="ProductName" type="text" placeholder="Enter ProductName" required><br />
+
+
+        <label for="SupplierId"><b>SupplierId</b></label>
+        <input asp-for="SupplierId" type="text" placeholder="Enter SupplierId" required><br />
+
+        <label for="CategoryId"><b>CategoryId</b></label>
+        <input asp-for="CategoryId" type="text" placeholder="Enter CategoryId" required><br />
+
+
+
+        <label for="UnitPrice"><b>UnitPrice</b></label>
+        <input asp-for="UnitPrice" type="number" placeholder="Enter UnitPrice" required><br />
+
+
+        <label for="QuantityPerUnit"><b>QuantityPerUnit</b></label>
+        <input asp-for="QuantityPerUnit" type="text" placeholder="Enter QuantityPerUnit" required><br />
+
+        <label for="UnitsInStock"><b>UnitsInStock</b></label>
+        <input asp-for="UnitsInStock" type="text" placeholder="Enter UnitsInStock" required><br />
+
+        <label for="UnitsOnOrder"><b>UnitsOnOrder</b></label>
+        <input asp-for="UnitsOnOrder" type="text" placeholder="Enter UnitsOnOrder" required><br />
+
+        <label for="ReorderLevel"><b>ReorderLevel</b></label>
+        <input asp-for="ReorderLevel" type="text" placeholder="Enter ReorderLevel" required>
+            <br />
+
+
+        <label for="Discontinued"><b>Discontinued</b></label>
+        <input asp-for="Discontinued" type="text" placeholder="Enter Discontinued" required><br />
+
+
+
+       
+
+        <hr>
+
+        
+        <button type="submit" class="CreateBtn">Create Product</button>
+    </div>
+
+   
+</form>

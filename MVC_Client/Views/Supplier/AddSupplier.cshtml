@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using MVC_Client.Model.Supplier;
+@model SupplierAdd
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@if (Context.Session.GetString("Key") == "" || Context.Session.GetString("Key") == null)
+{
+    <script>
+
+        window.location.href = '/Home';
+
+
+    </script>
+
+}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Product/Index">Products</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Category/Index">Category</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Supplier/Index">Supplier</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Customer/Index">Customer</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Order/Index">Order</a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Home/Logout">Logout</a>
+        </div>
+
+    </div>
+</nav>
+<form asp-controller="Supplier" asp-action="AddSupplier" method="post">
+    <div class="container">
+        <h1>Add Supplier</h1>
+        <p>Please fill in this form to create a Supplier.</p>
+        <hr>
+
+        <label for="CompanyName"><b>CompanyName</b></label>
+        <input asp-for="CompanyName" type="text" placeholder="Enter CompanyName" required><br />
+
+
+        <label for="ContactName"><b>ContactName</b></label>
+        <input asp-for="ContactName" type="text" placeholder="Enter ContactName" required><br />
+
+        <label for="ContactTitle"><b>ContactTitle</b></label>
+        <input asp-for="ContactTitle" type="text" placeholder="Enter ContactTitle" required><br />
+
+
+
+        <label for="Address"><b>Address</b></label>
+        <input asp-for="Address" type="text" placeholder="Enter Address" required><br />
+
+
+        <label for="City"><b>City</b></label>
+        <input asp-for="City" type="text" placeholder="Enter City" required><br />
+
+
+        <label for="Region"><b>Region</b></label>
+        <input asp-for="Region" type="Region" placeholder="Enter Region" required><br />
+
+
+        <label for="PostalCode"><b>PostalCode</b></label>
+        <input asp-for="PostalCode" type="text" placeholder="Enter PostalCode" required><br />
+
+        <label for="Country"><b>Country</b></label>
+        <input asp-for="Country" type="text" placeholder="Enter Country" required><br />
+
+        <label for="Phone"><b>Phone</b></label>
+        <input asp-for="Phone" type="text" placeholder="Enter Phone" required>
+        <br />
+
+
+        <label for="Fax"><b>Fax</b></label>
+        <input asp-for="Fax" type="text" placeholder="Enter Fax" required><br />
+
+
+        <label for="HomePage"><b>HomePage</b></label>
+        <input asp-for="HomePage" type="text" placeholder="Enter HomePage" required><br />
+
+
+
+        <hr>
+
+
+        <button type="submit" class="CreateBtn">Create Supplier</button>
+    </div>
+
+
+</form>

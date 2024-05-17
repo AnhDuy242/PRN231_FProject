@@ -1,0 +1,97 @@
+﻿@using MVC_Client.Model.Customer;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@if (Context.Session.GetString("Key") == "" || Context.Session.GetString("Key") == null)
+{
+    <script>
+
+        window.location.href = '/Home';
+
+
+    </script>
+
+}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Product/Index">Products</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Category/Index">Category</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Supplier/Index">Supplier</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Customer/Index">Customer</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Order/Index">Order</a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Home/Logout">Logout</a>
+        </div>
+
+    </div>
+</nav>
+
+<h1><strong>Detail Customer</strong></h1>
+<table class="table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
+
+    @foreach (CustomerVM p in Model)
+    {
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">CustomerId</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.CustomerId</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">CompanyName</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.CompanyName</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">ContactName</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.ContactName</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">ContactTitle</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.ContactTitle</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">Address</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.Address</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">City</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.City</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">Region</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.Region</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">PostalCode</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.PostalCode</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">Country</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.Country</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">Phone</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.Phone</td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using MVC_Client.Model;
+@using MVC_Client.Model.Supplier;
+@using MVC_Client.Model.Supplier
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@if (Context.Session.GetString("Key") == "" || Context.Session.GetString("Key") == null)
+{
+    <script>
+
+        window.location.href = '/Home';
+
+
+    </script>
+
+}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Product/Index">Products</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Category/Index">Category</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Supplier/Index">Supplier</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Customer/Index">Customer</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Order/Index">Order</a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Home/Logout">Logout</a>
+        </div>
+
+    </div>
+</nav>
+
+<h1><strong>Detail Supplier</strong></h1>
+<table class="table">
+    @foreach (SupplierVM p in Model)
+    {
+        <tr>
+            <td scope="col">SupplierId</td>
+            <td>@p.SupplierId</td>
+        </tr>
+        <tr>
+            <td scope="col">CompanyName</td>
+            <td>@p.CompanyName</td>
+        </tr>
+        <tr>
+            <td scope="col">ContactName</td>
+            <td>@p.ContactName</td>
+        </tr>
+        <tr>
+            <td scope="col">ContactTitle</td>
+            <td>@p.ContactTitle</td>
+        </tr>
+        <tr>
+            <td scope="col">Address</td>
+            <td>@p.Address</td>
+        </tr>
+        <tr>
+            <td scope="col">City</td>
+            <td>@p.City</td>
+        </tr>
+        <tr>
+            <td scope="col">Region</td>
+            <td>@p.Region</td>
+        </tr>
+        <tr>
+            <td scope="col">PostalCode</td>
+            <td>@p.PostalCode</td>
+        </tr>
+        <tr>
+            <td scope="col">Country</td>
+            <td>@p.Country</td>
+        </tr>
+        <tr>
+            <td scope="col">Phone</td>
+            <td>@p.Phone</td>
+        </tr>
+        <tr>
+            <td scope="col">Fax</td>
+            <td>@p.Fax</td>
+        </tr>
+
+        <tr>
+            <td scope="col">HomePage</td>
+            <td>@p.HomePage</td>
+        </tr>
+
+
+    }
+</table>

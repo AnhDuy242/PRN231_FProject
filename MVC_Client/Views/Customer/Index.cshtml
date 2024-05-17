@@ -1,0 +1,122 @@
+﻿@using MVC_Client.Model.Customer;
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if (Context.Session.GetString("Key") == "" || Context.Session.GetString("Key") == null)
+{
+    <script>
+
+        window.location.href = '/Home';
+
+
+    </script>
+
+}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Product/Index">Products</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Category/Index">Category</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Supplier/Index">Supplier</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Customer/Index">Customer</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Order/Index">Order</a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Home/Logout">Logout</a>
+        </div>
+
+    </div>
+</nav>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@* <div class="form-group">
+    <label for="sel1">Select Category</label>
+    <select class="form-control" id="sel1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+    </select>
+</div> *@
+
+<h1 style="text-align:center; "><strong>List Customer</strong></h1>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <form asp-controller="Customer" asp-action="Index" method="post" style="text-align: center;">
+        <input type="text" name="id" style="width: 300px; height: 50px; margin-bottom: 10px;" placeholder="Input Customer Id" />
+        <br />
+        <input type="submit" value="Search" style="width: 100px; height: 40px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;" />
+    </form>
+</div>
+
+
+<button style=" margin-bottom: 20px" type="button" class="btn btn-primary"><a style="color: #fff" asp-action="AddCustomer"> Add New Customer </a></button>
+<table class="table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">#</th>
+            <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">CustomerId</th>
+            <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">CompanyName</th>
+            <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">ContactTitle</th>
+            <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">Address</th>
+           
+            <th scope="col"></th>
+            <th scope="col">Action</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CustomerVM p in Model)
+        {
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">#</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">@p.CustomerId</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">@p.CompanyName</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">@p.ContactTitle</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">@p.Address</td>
+                
+                <td>
+                    <form asp-controller="Customer" asp-action="Delete" method="post">
+                        <input type="hidden" name="CustomerId" value="@p.CustomerId" />
+                        <button type="submit" class="btn btn-danger" style="background-color: #dc3545; border: none; color: #fff; padding: 5px 10px; border-radius: 5px;">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="Customer" asp-action="Update" method="post">
+                        <input type="hidden" name="id" value="@p.CustomerId" />
+                        <button type="submit" class="btn btn-primary" style="background-color: #007bff; border: none; color: #fff; padding: 5px 10px; border-radius: 5px;">Update</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="Customer" asp-action="Details">
+                        <input type="hidden" name="id" value="@p.CustomerId" />
+                        <button type="submit" class="btn btn-success" style="background-color: #28a745; border: none; color: #fff; padding: 5px 10px; border-radius: 5px;">Detail</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

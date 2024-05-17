@@ -1,0 +1,96 @@
+﻿@using MVC_Client.Model.Product;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@if (Context.Session.GetString("Key") == "" || Context.Session.GetString("Key") == null)
+{
+    <script>
+
+        window.location.href = '/Home';
+
+
+    </script>
+
+}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Product/Index">Products</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Category/Index">Category</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Supplier/Index">Supplier</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Customer/Index">Customer</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Order/Index">Order</a>
+        </div>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/Home/Logout">Logout</a>
+        </div>
+
+    </div>
+</nav>
+<h1><strong>Detail Product</strong></h1>
+<table class="table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
+
+    @foreach (ProductDetail p in Model)
+    {
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">ProductId</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.ProductId</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">ProductName</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.ProductName</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">SupplierId</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.SupplierId</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">CategoryId</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.CategoryId</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">QuantityPerUnit</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.QuantityPerUnit</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">UnitPrice</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.UnitPrice</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">UnitsInStock</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.UnitsInStock</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">UnitsOnOrder</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.UnitsOnOrder</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">ReorderLevel</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.ReorderLevel</td>
+        </tr>
+        <tr style="border: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 8px;">Discontinued</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">@p.Discontinued</td>
+        </tr>
+    }
+
+</table>
